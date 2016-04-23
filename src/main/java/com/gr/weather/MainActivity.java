@@ -309,6 +309,10 @@ public class MainActivity extends AppCompatActivity {
                 day1_above.setImageResource(R.drawable.ic_weather_above);
                 day1_below.setImageResource(R.drawable.ic_weather_below_snowstorm);
                 break;
+            case "雾":
+                day1_above.setImageResource(R.drawable.ic_weather_above);
+                day1_below.setImageResource(R.drawable.ic_weather_below_foggy);
+                break;
             default:
                 day1_above.setImageResource(R.drawable.ic_weather_na_w);
                 day1_below.setVisibility(View.GONE);
@@ -364,6 +368,10 @@ public class MainActivity extends AppCompatActivity {
             case "暴雪":
                 day2_above.setImageResource(R.drawable.ic_weather_above);
                 day2_below.setImageResource(R.drawable.ic_weather_below_snowstorm);
+                break;
+            case "雾":
+                day2_above.setImageResource(R.drawable.ic_weather_above);
+                day2_below.setImageResource(R.drawable.ic_weather_below_foggy);
                 break;
             default:
                 day2_above.setImageResource(R.drawable.ic_weather_na_w);
@@ -421,6 +429,10 @@ public class MainActivity extends AppCompatActivity {
                 day3_above.setImageResource(R.drawable.ic_weather_above);
                 day3_below.setImageResource(R.drawable.ic_weather_below_snowstorm);
                 break;
+            case "雾":
+                day3_above.setImageResource(R.drawable.ic_weather_above);
+                day3_below.setImageResource(R.drawable.ic_weather_below_foggy);
+                break;
             default:
                 day3_above.setImageResource(R.drawable.ic_weather_na_w);
                 day3_below.setVisibility(View.GONE);
@@ -476,6 +488,10 @@ public class MainActivity extends AppCompatActivity {
             case "暴雪":
                 day4_above.setImageResource(R.drawable.ic_weather_above);
                 day4_below.setImageResource(R.drawable.ic_weather_below_snowstorm);
+                break;
+            case "雾":
+                day4_above.setImageResource(R.drawable.ic_weather_above);
+                day4_below.setImageResource(R.drawable.ic_weather_below_foggy);
                 break;
             default:
                 day4_above.setImageResource(R.drawable.ic_weather_na_w);
@@ -533,6 +549,10 @@ public class MainActivity extends AppCompatActivity {
                 day5_above.setImageResource(R.drawable.ic_weather_above);
                 day5_below.setImageResource(R.drawable.ic_weather_below_snowstorm);
                 break;
+            case "雾":
+                day5_above.setImageResource(R.drawable.ic_weather_above);
+                day5_below.setImageResource(R.drawable.ic_weather_below_foggy);
+                break;
             default:
                 day5_above.setImageResource(R.drawable.ic_weather_na_w);
                 day5_below.setVisibility(View.GONE);
@@ -588,6 +608,10 @@ public class MainActivity extends AppCompatActivity {
             case "暴雪":
                 day6_above.setImageResource(R.drawable.ic_weather_above);
                 day6_below.setImageResource(R.drawable.ic_weather_below_snowstorm);
+                break;
+            case "雾":
+                day6_above.setImageResource(R.drawable.ic_weather_above);
+                day6_below.setImageResource(R.drawable.ic_weather_below_foggy);
                 break;
             default:
                 day6_above.setImageResource(R.drawable.ic_weather_na_w);

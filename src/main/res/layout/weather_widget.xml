@@ -1,0 +1,49 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/weather_plate"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#00000000"
+    android:paddingRight="16dp"
+    android:paddingLeft="16dp"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/wendu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="Weather"
+        android:text="N/A℃"
+        android:textColor="#ffffff"
+        android:textSize="50sp" />
+
+    <TextView
+        android:id="@+id/city"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/wendu"
+        android:layout_marginLeft="10dp"
+        android:text="N/A"
+        android:layout_marginTop="10dp"
+        android:textColor="#FFF"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tq"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/city"
+        android:layout_toRightOf="@id/wendu"
+        android:layout_alignStart="@id/city"
+        android:text="N/A"
+        android:textColor="#FFF"
+        android:textSize="16sp"/>
+
+    <ImageView
+        android:id="@+id/tq_img"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/ic_weather_na_w"
+        android:layout_alignParentRight="true"/>
+
+</RelativeLayout>

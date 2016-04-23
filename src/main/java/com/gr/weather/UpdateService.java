@@ -1,9 +1,12 @@
 package com.gr.weather;
 
 import android.app.Service;
+import android.appwidget.AppWidgetManager;
+import android.content.ComponentName;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.IBinder;
+import android.widget.RemoteViews;
 import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
@@ -41,7 +44,7 @@ public class UpdateService extends Service {
         params = new RequestParams("http://op.juhe.cn/onebox/weather/query");
         params.addBodyParameter("key", "c02c680c29e8ccc1a5b60d6a6947afcd");
         initLocation();
-        intent=new Intent("com.gr.weather.WeatherUpdate");
+        intent = new Intent("com.gr.weather.WeatherUpdate");
         timer = new Timer();
         timer.schedule(new TimerTask() {
             @Override
@@ -80,7 +83,7 @@ public class UpdateService extends Service {
 
                     editor.putString("direct", realtime.getWind().getDirect());
                     editor.putString("power", realtime.getWind().getPower());
-                    editor.putString("time", realtime.getTime().substring(0,5));
+                    editor.putString("time", realtime.getTime().substring(0, 5));
                     editor.putString("humidity", realtime.getWeather().getHumidity());
                     editor.putString("info", realtime.getWeather().getInfo());
                     editor.putString("temperature", realtime.getWeather().getTemperature());
@@ -126,19 +129,70 @@ public class UpdateService extends Service {
                     editor.putString("week_day_6", week.get(5).getWeek());
 
                     Weather.ResultBean.DataBean.Pm25Bean.Pm25 pm25 = weather.getResult().getData().getPm25().getPm25();
-                    editor.putString("pm25",pm25.getPm25());
-                    editor.putString("pm10",pm25.getPm10());
-                    editor.putString("curPm",pm25.getCurPm());
-                    editor.putString("quality",pm25.getQuality());
-                    editor.putString("des",pm25.getDes());
+                    editor.putString("pm25", pm25.getPm25());
+                    editor.putString("pm10", pm25.getPm10());
+                    editor.putString("curPm", pm25.getCurPm());
+                    editor.putString("quality", pm25.getQuality());
+                    editor.putString("des", pm25.getDes());
 
                     editor.commit();
                     sendBroadcast(intent);
+
+                    RemoteViews widget = new RemoteViews(getApplicationContext().getPackageName(), R.layout.weather_widget);
+                    widget.setTextViewText(R.id.wendu, preferences.getString("temperature", "N/A") + "℃");
+                    widget.setTextViewText(R.id.city, preferences.getString("city_name", "N/A"));
+                    widget.setTextViewText(R.id.tq, preferences.getString("info", "N/A"));
+                    int icon = R.drawable.ic_weather_na_w;
+                    switch (preferences.getString("info", "N/A")) {
+                        case "晴":
+                            icon = R.drawable.ic_weather_sun;
+                            break;
+                        case "多云":
+                            icon = R.drawable.ic_widget_cloudy;
+                            break;
+                        case "阴":
+                            icon = R.drawable.ic_widget_overcast;
+                            break;
+                        case "小雨":
+                            icon = R.drawable.ic_widget_lightrain;
+                            break;
+                        case "中雨":
+                            icon = R.drawable.ic_widget_moderaterain;
+                            break;
+                        case "大雨":
+                            icon = R.drawable.ic_widget_heavyrain;
+                            break;
+                        case "暴雨":
+                            icon = R.drawable.ic_widget_heavyrain;
+                            break;
+                        case "雨夹雪":
+                            icon = R.drawable.ic_widget_sleet;
+                            break;
+                        case "小雪":
+                            icon = R.drawable.ic_widget_lightsnow;
+                            break;
+                        case "中雪":
+                            icon = R.drawable.ic_widget_lightsnow;
+                            break;
+                        case "大雪":
+                            icon = R.drawable.ic_widget_snowstorm;
+                            break;
+                        case "暴雪":
+                            icon = R.drawable.ic_widget_snowstorm;
+                            break;
+                        case "雾":
+                            icon = R.drawable.ic_widget_foggy;
+                            break;
+                    }
+                    widget.setImageViewResource(R.id.tq_img, icon);
+
+                    AppWidgetManager.getInstance(getApplicationContext()).updateAppWidget(
+                            new ComponentName(getApplicationContext(), WeatherWidget.class), widget);
                 }
 
                 @Override
                 public void onError(Throwable ex, boolean isOnCallback) {
-                    Toast.makeText(x.app(), ex.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), ex.getMessage(), Toast.LENGTH_SHORT).show();
                 }
 
                 @Override
