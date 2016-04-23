@@ -89,12 +89,12 @@ public class UpdateService extends Service {
                     Weather.ResultBean.DataBean.LifeBean life = weather.getResult().getData().getLife();
                     editor.putString("yundong_0", life.getInfo().getYundong().get(0));
                     editor.putString("yundong_1", life.getInfo().getYundong().get(1));
-                    editor.putString("ziwaixian_0", life.getInfo().getYundong().get(0));
-                    editor.putString("ziwaixian1_", life.getInfo().getYundong().get(1));
-                    editor.putString("xiche_0", life.getInfo().getYundong().get(0));
-                    editor.putString("xiche_1", life.getInfo().getYundong().get(1));
-                    editor.putString("chuanyi_0", life.getInfo().getYundong().get(0));
-                    editor.putString("chuanyi_1", life.getInfo().getYundong().get(1));
+                    editor.putString("ziwaixian_0", life.getInfo().getZiwaixian().get(0));
+                    editor.putString("ziwaixian_1", life.getInfo().getZiwaixian().get(1));
+                    editor.putString("xiche_0", life.getInfo().getXiche().get(0));
+                    editor.putString("xiche_1", life.getInfo().getXiche().get(1));
+                    editor.putString("chuanyi_0", life.getInfo().getChuanyi().get(0));
+                    editor.putString("chuanyi_1", life.getInfo().getChuanyi().get(1));
 
                     List<Weather.ResultBean.DataBean.WeatherBean> week = weather.getResult().getData().getWeather();
                     editor.putString("maximum_temperature_day_1", week.get(0).getInfo().getDay().get(2));

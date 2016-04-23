@@ -116,12 +116,20 @@ public class MainActivity extends AppCompatActivity {
     @ViewInject(R.id.humidity)
     private TextView humidity;
 
+    @ViewInject(R.id.yundongzhishu)
+    private LinearLayout yundongzhishu;
     @ViewInject(R.id.yundong)
     private TextView yundong;
+    @ViewInject(R.id.ziwanxianzhishu)
+    private LinearLayout ziwanxianzhishu;
     @ViewInject(R.id.ziwaixian)
     private TextView ziwaixian;
+    @ViewInject(R.id.chuanyizhishu)
+    private LinearLayout chuanyizhishu;
     @ViewInject(R.id.chuanyi)
     private TextView chuanyi;
+    @ViewInject(R.id.xichezhishu)
+    private LinearLayout xichezhishu;
     @ViewInject(R.id.xiche)
     private TextView xiche;
 
@@ -166,7 +174,11 @@ public class MainActivity extends AppCompatActivity {
         chart.setData(lineData);
         chart.animateX(1000);
         tint = getResources().getColorStateList(R.color.tint);
-        des.setOnClickListener((v) -> Snackbar.make(v, preferences.getString("des", "N/A"), Snackbar.LENGTH_LONG).show());
+        des.setOnClickListener(v -> Snackbar.make(v, preferences.getString("des", "N/A"), Snackbar.LENGTH_LONG).show());
+        yundongzhishu.setOnClickListener(v -> Snackbar.make(v,preferences.getString("yundong_1","N/A"),Snackbar.LENGTH_LONG).show());
+        ziwanxianzhishu.setOnClickListener(v -> Snackbar.make(v,preferences.getString("ziwaixian_1","N/A"),Snackbar.LENGTH_LONG).show());
+        chuanyizhishu.setOnClickListener(v -> Snackbar.make(v,preferences.getString("chuanyi_1","N/A"),Snackbar.LENGTH_LONG).show());
+        xichezhishu.setOnClickListener(v -> Snackbar.make(v,preferences.getString("xiche_1","N/A"),Snackbar.LENGTH_LONG).show());
         updateWeather();
     }
 
@@ -611,10 +623,10 @@ public class MainActivity extends AppCompatActivity {
         power.setText(preferences.getString("power","N/A"));
         humidity.setText(preferences.getString("humidity","N/A")+"%");
 
-        yundong.setText(preferences.getString("yundong","N/A"));
-        ziwaixian.setText(preferences.getString("ziwaixian","N/A"));
-        chuanyi.setText(preferences.getString("chuanyi","N/A"));
-        xiche.setText(preferences.getString("xiche","N/A"));
+        yundong.setText(preferences.getString("yundong_0","N/A"));
+        ziwaixian.setText(preferences.getString("ziwaixian_0","N/A"));
+        chuanyi.setText(preferences.getString("chuanyi_0","N/A"));
+        xiche.setText(preferences.getString("xiche_0","N/A"));
     }
 
     @Override
