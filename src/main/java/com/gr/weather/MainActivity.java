@@ -116,6 +116,15 @@ public class MainActivity extends AppCompatActivity {
     @ViewInject(R.id.humidity)
     private TextView humidity;
 
+    @ViewInject(R.id.yundong)
+    private TextView yundong;
+    @ViewInject(R.id.ziwaixian)
+    private TextView ziwaixian;
+    @ViewInject(R.id.chuanyi)
+    private TextView chuanyi;
+    @ViewInject(R.id.xiche)
+    private TextView xiche;
+
     private Intent intent;
     private SharedPreferences preferences;
     private WeatherReceiver receiver;
@@ -601,6 +610,11 @@ public class MainActivity extends AppCompatActivity {
         direct.setText(preferences.getString("direct","N/A"));
         power.setText(preferences.getString("power","N/A"));
         humidity.setText(preferences.getString("humidity","N/A")+"%");
+
+        yundong.setText(preferences.getString("yundong","N/A"));
+        ziwaixian.setText(preferences.getString("ziwaixian","N/A"));
+        chuanyi.setText(preferences.getString("chuanyi","N/A"));
+        xiche.setText(preferences.getString("xiche","N/A"));
     }
 
     @Override
